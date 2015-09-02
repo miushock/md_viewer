@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    credential: grunt.file.readJSON('.credential.json'),
 
     jshint: {
       files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
@@ -38,8 +39,11 @@ module.exports = function(grunt) {
       widget_html: "./src/md_viewer.html",
       widget_style: "./src/md_viewer.css",
       widget_script: "./src/md_viewer.js",
+      shim_dependencies: ['markdown'],
       name: '<%= pkg.name %>',
-      author_email: "widget.moneky@freelog.co"
+      author_email: "widget.moneky@freelog.co",
+      auth_email: "<%= credential.user_email %>",
+      auth_pw: "<%= credential.password %>"
     }
 
   });
